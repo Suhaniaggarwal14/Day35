@@ -1,0 +1,25 @@
+server:
+ port: 8099
+spring:
+ cloud:
+  gateway:
+    name: API-GATEWAY
+    routes:
+      - id: StudentMicroservice
+        url: http://localhost:8080
+        predicates:
+        -path: /api/v1/students/**	
+      - id: CourseMicroservice-1
+        url: http://localhost:8082
+        predicates:
+        -path: /api/v1/courses/**  
+#eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+#eureka.client.instance.preferIpAddress:true
+#eureka:
+# client:
+#   service:
+#     -url:
+#       defaultZone; http://localhost:8761/eureka
+#   instance:
+#     preferIpAddress: true
+
